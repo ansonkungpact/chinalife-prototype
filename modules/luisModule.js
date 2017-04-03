@@ -24,7 +24,7 @@ var cNlcModule = function() {
     var luisURL = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/";
 
     // MS Cognitive Service
-    var luisID = '08939128-978d-408d-9c01-0f791c357d69';
+    var luisID = '20f886a5-cd24-43b7-b145-8c5ef6401261';
     if (process.env.MS_LUIS_ID) {
       // console.log("using env.MS_LUIS_ID");
       luisID = process.env.MS_LUIS_ID;
@@ -36,7 +36,7 @@ var cNlcModule = function() {
       phraselistId = process.env.MS_PHRASE_LIST_ID;
     }
 
-    var subscriptionkey = '85104b00ebda46949246c9828ee9f281';
+    var subscriptionkey = '2ae235d8af814771ad5c5653ce46ab93';
     var isLog = false;
     var moduleName = 'NLC_MODULE';
 
