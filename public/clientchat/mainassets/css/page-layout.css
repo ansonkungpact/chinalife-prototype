@@ -24274,7 +24274,8 @@ a[aria-expanded=true].hvr-icon-rotate:before {
         display: block!important;
         position: fixed;
         left: 50%;
-        margin-left: -23px
+        margin-left: -23px;
+        margin-top: 8px;
     }
     .primary-nav {
         padding-top: 0!important;
