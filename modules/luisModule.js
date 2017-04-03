@@ -50,12 +50,13 @@ var cNlcModule = function() {
         q = qs.escape(q);
         var url = luisURL+luisID+'?subscription-key='+subscriptionkey+'&verbose=true&q=';
         console.log('translating.......');
-        translate(decodeURIComponent(q), {from: 'zh-TW', to: 'en'}).then(res => {
+        console.log(decodeURIComponent(q));
+        translate(decodeURIComponent(q), {to: 'en'}).then(res => {
             // console.log(res);
-            console.log(res.text);
+            console.log(res.text.toLowerCase());
             console.log('testing again');
             q = res.text;
-            url = url + res.text;
+            url = url + res.text.toLowerCase();
             console.log(url);
         
             var opt = {

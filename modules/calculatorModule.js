@@ -471,7 +471,8 @@ var cCalculatorModule = function (){
 							}else if(entity == "medicalBenefit" && (entities[i]['entity'] == "physiotherapist") || 
 																	(entities[i]['entity'] == "physio") ||
 																	(entities[i]['entity'] == "physical therapy") ||
-																	(entities[i]['entity'] == "physical therapist")){
+																	(entities[i]['entity'] == "physical therapist") ||
+																	(entities[i]['entity'] == "physiotherapy")){
 									extractsFromQuestion.QTAG2 = "physiotherapist";
 									break;
 							}
