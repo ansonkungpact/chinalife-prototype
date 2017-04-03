@@ -439,7 +439,8 @@ var cCalculatorModule = function (){
 							if(entity == "medicalBenefit" && entities[i]['entity'] == "outpatient"){
 									extractsFromQuestion.QTAG1 = entities[i]['entity'];
 									break;
-							}else if(entity == "medicalBenefit" && entities[i]['entity'] == "specialist"){
+							}else if(entity == "medicalBenefit" && (entities[i]['entity'] == "specialist") ||
+															 	   (entities[i]['entity'] == "expert")){
 									extractsFromQuestion.QTAG1 = "outpatient";
 									extractsFromQuestion.QTAG2 = entities[i]['entity'];
 									break;
@@ -465,8 +466,9 @@ var cCalculatorModule = function (){
 							console.log("-------------------------------");
 							console.log(entities[i]['entity']);
 							console.log("-------------------------------");
-							if(entity == "medicalBenefit" && entities[i]['entity'] == "specialist"){
-									extractsFromQuestion.QTAG2 = entities[i]['entity'];
+							if(entity == "medicalBenefit" && (entities[i]['entity'] == "specialist") ||
+															 (entities[i]['entity'] == "expert")){
+									extractsFromQuestion.QTAG2 = "specialist";
 									break;
 							}else if(entity == "medicalBenefit" && (entities[i]['entity'] == "physiotherapist") || 
 																	(entities[i]['entity'] == "physio") ||
@@ -530,10 +532,17 @@ var cCalculatorModule = function (){
 			.then(function(next, result) {
 				console.log('44444');
 				if(currentQuestion == 'RESTART'){
-					if(question == "yes" || question == "sure" || question == "ofcourse"){
-						extractsFromQuestion.RESTART = "yes";
-					}else{
-						extractsFromQuestion.RESTART = "no";
+					var entities = classifierResponse["entities"];
+					console.log(entities);
+					for(var i=0;i<entities.length;i++){
+						var entity = entities[i]['type'];
+						console.log("GOT ENTTITY TYPE");
+						console.log("entity:::"+entity);
+						if(entity == "positiveFeedback"){
+							extractsFromQuestion.RESTART = "yes";
+						} else {
+							extractsFromQuestion.RESTART = "no";
+						}
 					}
 					callbackFunc();
 				}else{
@@ -544,10 +553,18 @@ var cCalculatorModule = function (){
 				console.log('5555');
 					console.log("currentQuestion:::"+currentQuestion);
 					if(currentQuestion == 'INFO_PHYSIOTHERAPIST_COVERAGE'){
-						if(question == "yes" || question == "sure" || question == "ofcourse"){
-							extractsFromQuestion.PHYSIOTHERAPIST_COVERAGE = "yes";
-						}else{
-							extractsFromQuestion.PHYSIOTHERAPIST_COVERAGE = "no";
+
+						var entities = classifierResponse["entities"];
+						console.log(entities);
+						for(var i=0;i<entities.length;i++){
+							var entity = entities[i]['type'];
+							console.log("GOT ENTTITY TYPE");
+							console.log("entity:::"+entity);
+							if(entity == "positiveFeedback"){
+								extractsFromQuestion.PHYSIOTHERAPIST_COVERAGE = "yes";
+							} else {
+								extractsFromQuestion.PHYSIOTHERAPIST_COVERAGE = "no";
+							}
 						}
 						callbackFunc();
 					}else{
