@@ -462,12 +462,16 @@ var cCalculatorModule = function (){
 						for(var i=0;i<entities.length;i++){
 							var entity = entities[i]['type'];
 							console.log("entity:::"+entity);
+							console.log("-------------------------------");
+							console.log(entities[i]['entity']);
+							console.log("-------------------------------");
 							if(entity == "medicalBenefit" && entities[i]['entity'] == "specialist"){
 									extractsFromQuestion.QTAG2 = entities[i]['entity'];
 									break;
 							}else if(entity == "medicalBenefit" && (entities[i]['entity'] == "physiotherapist") || 
 																	(entities[i]['entity'] == "physio") ||
-																	(entities[i]['entity'] == "physical therapy")){
+																	(entities[i]['entity'] == "physical therapy") ||
+																	(entities[i]['entity'] == "physical therapist")){
 									extractsFromQuestion.QTAG2 = "physiotherapist";
 									break;
 							}
